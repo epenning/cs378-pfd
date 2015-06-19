@@ -48,4 +48,4 @@ script:
     - make check
 	
 notifications:
-    email: false
+  email: false
