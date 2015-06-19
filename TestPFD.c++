@@ -14,6 +14,8 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
+#include <vector>
+#include <list>
 
 #include "gtest/gtest.h"
 
@@ -26,11 +28,53 @@ using namespace std;
 // -----------
 
 // ----
+// read_first
+// ----
+
+TEST(PFDFixture, read_first) {
+    string s = "5 4\n";
+    const pair<int, int> p = pfd_read_first(s);
+    ASSERT_EQ( 5, p.first);
+    ASSERT_EQ(4, p.second);
+	}
+
+// ----
 // read
 // ----
 
 TEST(PFDFixture, read) {
-    // FIX THIS
+    string s = "3 2 1 5\n";
+    std::vector<int> p = pfd_read(s);
+    ASSERT_EQ( 3, p[0]);
+    ASSERT_EQ( 1, p[1]);
+    ASSERT_EQ( 5, p[2]);
+	}
+
+// ----
+// make_lists
+// ----
+
+TEST(PFDFixture, make_lists) {
+    std::vector<list<int>> lists = make_lists(5);
+    ASSERT_EQ( 5, lists.size());
+	}
+
+// ----
+// set_lists
+// ----
+
+TEST(PFDFixture, set_lists_1) {
+    make_lists(5);
+    std::vector<list<int>> lists = set_list({ 3, 1, 5 });
+    ASSERT_EQ( 2, lists[3].size());
+	}
+
+TEST(PFDFixture, set_lists_2) {
+    make_lists(5);
+    auto lists = set_list({ 3, 1, 5 });
+    auto iter = lists[3].begin();
+    ASSERT_EQ( 1, *(iter++));
+    ASSERT_EQ( 5, *(iter++));
 	}
 
 // ----
@@ -52,10 +96,13 @@ TEST(PFDFixture, print) {
 // -----
 // solve
 // -----
-
+/*
 TEST(PFDFixture, solve) {
-    // FIX THIS
-	}
+    istringstream r("1 10\n100 200\n201 210\n900 1000\n");
+    ostringstream w;
+    pfd_solve(r, w);
+    ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());
+	}*/
 
 /*
 % ls -al /usr/include/gtest/
