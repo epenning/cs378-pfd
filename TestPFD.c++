@@ -78,6 +78,19 @@ TEST(PFDFixture, set_lists_2) {
 	}
 
 // ----
+// make_graph
+// ----
+
+TEST(PFDFixture, make_graph_1) {
+    istringstream r("5 1\n3 2 1 5\n");
+    auto lists = make_graph(r);
+    ASSERT_EQ( 5, lists.size());
+    auto iter = lists[3].begin();
+    ASSERT_EQ( 1, *(iter++));
+    ASSERT_EQ( 5, *(iter++));
+	}
+
+// ----
 // eval
 // ----
 

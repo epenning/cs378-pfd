@@ -63,7 +63,7 @@ vector<list<int>> set_list (vector<int> v);
 // make_graph
 // ------------
 
-vector<list<int>> make_graph (istream& r, ostream& w);
+vector<list<int>> make_graph (istream& r);
 
 // ------------
 // pfd_eval

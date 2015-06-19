@@ -84,8 +84,9 @@ vector<list<int>> set_list (vector<int> v) {
 // make_graph
 // ------------
 
-vector<list<int>> make_graph (istream& r, ostream& w) {
+vector<list<int>> make_graph (istream& r) {
     string s;
+    getline(r, s);
     const pair<int, int> p = pfd_read_first(s);
     make_lists(p.first);
     for (int i = 0; i < p.second; ++i)
