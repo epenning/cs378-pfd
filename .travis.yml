@@ -44,3 +44,6 @@ script:
     - make test CXX=clang++
     - ls -al
     - make check
+	
+notifications:
+    email: false
