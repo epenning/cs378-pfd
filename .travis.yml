@@ -1,8 +1,8 @@
+sudo: required
+
 language: cpp
 
 compiler: gcc
-
-sudo: required
 
 before_install:
     - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
@@ -46,6 +46,6 @@ script:
     - make test CXX=clang++
     - ls -al
     - make check
-	
+
 notifications:
   email: false
