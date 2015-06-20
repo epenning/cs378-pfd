@@ -1,18 +1,18 @@
-==20570== Memcheck, a memory error detector
-==20570== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==20570== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==20570== Command: ./TestPFD
-==20570== 
+==21758== Memcheck, a memory error detector
+==21758== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==21758== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==21758== Command: ./TestPFD
+==21758== 
 Running main() from gtest_main.cc
 [==========] Running 13 tests from 1 test case.
 [----------] Global test environment set-up.
 [----------] 13 tests from PFDFixture
 [ RUN      ] PFDFixture.read_first
-[       OK ] PFDFixture.read_first (16 ms)
+[       OK ] PFDFixture.read_first (17 ms)
 [ RUN      ] PFDFixture.read
-[       OK ] PFDFixture.read (17 ms)
+[       OK ] PFDFixture.read (18 ms)
 [ RUN      ] PFDFixture.make_lists_1
-[       OK ] PFDFixture.make_lists_1 (29 ms)
+[       OK ] PFDFixture.make_lists_1 (30 ms)
 [ RUN      ] PFDFixture.make_lists_2
 [       OK ] PFDFixture.make_lists_2 (5 ms)
 [ RUN      ] PFDFixture.set_lists_1
@@ -33,25 +33,25 @@ Running main() from gtest_main.cc
 [       OK ] PFDFixture.eval_1 (1 ms)
 [ RUN      ] PFDFixture.print
 [       OK ] PFDFixture.print (8 ms)
-[----------] 13 tests from PFDFixture (154 ms total)
+[----------] 13 tests from PFDFixture (153 ms total)
 
 [----------] Global test environment tear-down
 [==========] 13 tests from 1 test case ran. (181 ms total)
 [  PASSED  ] 13 tests.
-==20570== 
-==20570== HEAP SUMMARY:
-==20570==     in use at exit: 0 bytes in 0 blocks
-==20570==   total heap usage: 596 allocs, 596 frees, 70,404 bytes allocated
-==20570== 
-==20570== All heap blocks were freed -- no leaks are possible
-==20570== 
-==20570== For counts of detected and suppressed errors, rerun with: -v
-==20570== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21758== 
+==21758== HEAP SUMMARY:
+==21758==     in use at exit: 0 bytes in 0 blocks
+==21758==   total heap usage: 596 allocs, 596 frees, 70,403 bytes allocated
+==21758== 
+==21758== All heap blocks were freed -- no leaks are possible
+==21758== 
+==21758== For counts of detected and suppressed errors, rerun with: -v
+==21758== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'PFD.c++'
 Lines executed:93.33% of 45
 Branches executed:100.00% of 64
 Taken at least once:57.81% of 64
-Calls executed:82.54% of 63
+Calls executed:83.08% of 65
 Creating 'PFD.c++.gcov'
 
 File '/usr/include/c++/4.8/iostream'

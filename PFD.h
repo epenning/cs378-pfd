@@ -24,7 +24,7 @@ using namespace std;
 // ------------
 
 /**
- * read two ints
+ * read the two first ints of input
  * @param s a string
  * @return a pair of ints, representing the number of tasks and number of rules
  */
@@ -35,12 +35,11 @@ pair<int, int> pfd_read_first (const string& s);
 // ------------
 
 /**
- * read a string of ints
+ * read a string of multiple ints
  * @param s a string
  * @return a vector, with first element being the task and the others being those it is dependent on
  */
-std::vector<int> pfd_read (const string& s);
-    // FIX THIS
+vector<int> pfd_read (const string& s);
 
 
 // -----------
@@ -48,8 +47,9 @@ std::vector<int> pfd_read (const string& s);
 // -----------
 
 /**
- * initialize the adjacenty lists to the number of tasks
+ * initialize empty adjacenty lists for the number of tasks
  * @param dimension the number of tasks
+ * @return the empty adjacency lists graph structure
  */
 vector<list<int>> make_lists (int dimension);
 
@@ -57,12 +57,23 @@ vector<list<int>> make_lists (int dimension);
 // set_list
 // ------------
 
+/**
+ * put a task into the list of successors for each predecessor listed
+ * @param v first element: the task to be added to each successor list
+ *          other elements: the predecessors onto whose lists the task will be added
+ * @return the updated adjacency lists graph structure
+ */
 vector<list<int>> set_list (vector<int> v);
 
 // ------------
 // make_graph
 // ------------
 
+/**
+ * create an adjacency list graph structure from an input stream
+ * @param r an istream
+ * @return the fully populated adjacency lists graph structure
+ */
 vector<list<int>> make_graph (istream& r);
 
 // ------------
@@ -82,14 +93,12 @@ int pfd_eval (int i, int j);
 // -------------
 
 /**
- * print three ints
+ * print a vector of ints (tasks)
  * @param w an ostream
- * @param i the beginning of the range, inclusive
- * @param j the end       of the range, inclusive
- * @param v the max cycle length
+ * @param v the vector
+ * @param num_task the number of tasks to be printed
  */
 void pfd_print (ostream& w, vector<int> v, int num_task);
-    // FIX THIS
 
 // -------------
 // pfd_solve

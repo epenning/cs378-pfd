@@ -163,7 +163,7 @@ TEST(PFDFixture, eval_1) {
 TEST(PFDFixture, print) {
     ostringstream w;
     pfd_print(w, {1, 5, 3, 2, 4}, 5);
-    ASSERT_EQ("1 5 3 2 4 \n", w.str());
+    ASSERT_EQ("1 5 3 2 4\n", w.str());
 	}
 
 // -----

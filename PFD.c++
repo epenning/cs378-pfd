@@ -20,6 +20,11 @@
 
 using namespace std;
 
+/**
+ * A vector of lists, where the index into vector represents
+ * a task (which is task index+1) and the list at that index
+ * represents the other tasks which depend on it (successors).
+ */
 vector<list<int>> adj_lists; 
 
 // ------------
@@ -27,20 +32,20 @@ vector<list<int>> adj_lists;
 // ------------
 
 pair<int, int> pfd_read_first (const string& s) {
-    // FIX THIs
     istringstream sin(s);
     int i;
     int j;
     sin >> i >> j;
-    return make_pair(i, j);}
+    return make_pair(i, j);
+}
 
 // ------------
 // pfd_read
 // ------------
 
-std::vector<int> pfd_read (const string& s) {
+vector<int> pfd_read (const string& s) {
     
-    std::vector<int> v;
+    vector<int> v;
     istringstream sin(s);
     int task;
     int num_rules;
@@ -54,7 +59,8 @@ std::vector<int> pfd_read (const string& s) {
         v.push_back(predecessor);
     }
 
-    return v;}
+    return v;
+}
 
 // ------------
 // make_lists
@@ -74,6 +80,7 @@ vector<list<int>> make_lists (int dimension) {
 // ------------
 
 vector<list<int>> set_list (vector<int> v) {
+    // for every listed predecessor, add task to its successor list
     int task = v[0];
     for (int i = 1; i < v.size(); ++i)
     {
@@ -88,9 +95,11 @@ vector<list<int>> set_list (vector<int> v) {
 
 vector<list<int>> make_graph (istream& r) {
     string s;
+    // read and use info from the first line
     getline(r, s);
     const pair<int, int> p = pfd_read_first(s);
     make_lists(p.first);
+    // read and use info from the remaining lines
     for (int i = 0; i < p.second; ++i)
     {
         getline(r, s);
@@ -113,11 +122,11 @@ int pfd_eval (int i, int j) {
 // -------------
 
 void pfd_print (ostream& w, vector<int> v, int num_task) {
-    for (int i = 0; i < num_task; ++i)
+    for (int i = 0; i < num_task-1; ++i)
     {
         w << v[i] << " ";
     }
-    w << endl;
+    w << v[num_task-1] << endl;
 }
 // -------------
 // pfd_solve
