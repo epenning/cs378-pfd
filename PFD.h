@@ -88,7 +88,7 @@ int pfd_eval (int i, int j);
  * @param j the end       of the range, inclusive
  * @param v the max cycle length
  */
-void pfd_print (ostream& w, int i, int j, int v);
+void pfd_print (ostream& w, vector<int> v, int num_task);
     // FIX THIS
 
 // -------------

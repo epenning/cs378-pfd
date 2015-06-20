@@ -110,10 +110,13 @@ int pfd_eval (int i, int j) {
 // pfd_print
 // -------------
 
-void pfd_print (ostream& w, int i, int j, int v) {
-    // FIX THIS
-    w << i << " " << j << " " << v << endl;}
-
+void pfd_print (ostream& w, vector<int> v, int num_task) {
+    for (int i = 0; i < num_task; ++i)
+    {
+        w << v[i] << " ";
+    }
+    w << endl;
+}
 // -------------
 // pfd_solve
 // -------------
