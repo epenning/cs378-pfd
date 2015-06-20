@@ -1,47 +1,57 @@
-==22659== Memcheck, a memory error detector
-==22659== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==22659== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==22659== Command: ./TestPFD
-==22659== 
+==20570== Memcheck, a memory error detector
+==20570== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==20570== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==20570== Command: ./TestPFD
+==20570== 
 Running main() from gtest_main.cc
-[==========] Running 8 tests from 1 test case.
+[==========] Running 13 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 8 tests from PFDFixture
+[----------] 13 tests from PFDFixture
 [ RUN      ] PFDFixture.read_first
-[       OK ] PFDFixture.read_first (18 ms)
+[       OK ] PFDFixture.read_first (16 ms)
 [ RUN      ] PFDFixture.read
-[       OK ] PFDFixture.read (18 ms)
-[ RUN      ] PFDFixture.make_lists
-[       OK ] PFDFixture.make_lists (26 ms)
+[       OK ] PFDFixture.read (17 ms)
+[ RUN      ] PFDFixture.make_lists_1
+[       OK ] PFDFixture.make_lists_1 (29 ms)
+[ RUN      ] PFDFixture.make_lists_2
+[       OK ] PFDFixture.make_lists_2 (5 ms)
 [ RUN      ] PFDFixture.set_lists_1
-[       OK ] PFDFixture.set_lists_1 (25 ms)
+[       OK ] PFDFixture.set_lists_1 (20 ms)
 [ RUN      ] PFDFixture.set_lists_2
-[       OK ] PFDFixture.set_lists_2 (6 ms)
+[       OK ] PFDFixture.set_lists_2 (4 ms)
+[ RUN      ] PFDFixture.set_lists_3
+[       OK ] PFDFixture.set_lists_3 (6 ms)
+[ RUN      ] PFDFixture.set_lists_4
+[       OK ] PFDFixture.set_lists_4 (7 ms)
 [ RUN      ] PFDFixture.make_graph_1
-[       OK ] PFDFixture.make_graph_1 (16 ms)
+[       OK ] PFDFixture.make_graph_1 (15 ms)
+[ RUN      ] PFDFixture.make_graph_2
+[       OK ] PFDFixture.make_graph_2 (8 ms)
+[ RUN      ] PFDFixture.make_graph_3
+[       OK ] PFDFixture.make_graph_3 (9 ms)
 [ RUN      ] PFDFixture.eval_1
-[       OK ] PFDFixture.eval_1 (2 ms)
+[       OK ] PFDFixture.eval_1 (1 ms)
 [ RUN      ] PFDFixture.print
-[       OK ] PFDFixture.print (7 ms)
-[----------] 8 tests from PFDFixture (126 ms total)
+[       OK ] PFDFixture.print (8 ms)
+[----------] 13 tests from PFDFixture (154 ms total)
 
 [----------] Global test environment tear-down
-[==========] 8 tests from 1 test case ran. (156 ms total)
-[  PASSED  ] 8 tests.
-==22659== 
-==22659== HEAP SUMMARY:
-==22659==     in use at exit: 0 bytes in 0 blocks
-==22659==   total heap usage: 378 allocs, 378 frees, 58,332 bytes allocated
-==22659== 
-==22659== All heap blocks were freed -- no leaks are possible
-==22659== 
-==22659== For counts of detected and suppressed errors, rerun with: -v
-==22659== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 13 tests from 1 test case ran. (181 ms total)
+[  PASSED  ] 13 tests.
+==20570== 
+==20570== HEAP SUMMARY:
+==20570==     in use at exit: 0 bytes in 0 blocks
+==20570==   total heap usage: 596 allocs, 596 frees, 70,404 bytes allocated
+==20570== 
+==20570== All heap blocks were freed -- no leaks are possible
+==20570== 
+==20570== For counts of detected and suppressed errors, rerun with: -v
+==20570== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'PFD.c++'
 Lines executed:93.33% of 45
-Branches executed:100.00% of 58
-Taken at least once:56.90% of 58
-Calls executed:86.54% of 52
+Branches executed:100.00% of 64
+Taken at least once:57.81% of 64
+Calls executed:82.54% of 63
 Creating 'PFD.c++.gcov'
 
 File '/usr/include/c++/4.8/iostream'
@@ -50,37 +60,70 @@ No branches
 Calls executed:100.00% of 2
 Creating 'iostream.gcov'
 
+File '/usr/include/c++/4.8/bits/allocator.h'
+Lines executed:75.00% of 8
+No branches
+Calls executed:90.00% of 10
+Creating 'allocator.h.gcov'
+
 File '/usr/include/c++/4.8/bits/stl_list.h'
-Lines executed:83.97% of 131
-Branches executed:90.91% of 22
-Taken at least once:50.00% of 22
-Calls executed:71.59% of 88
+Lines executed:59.72% of 144
+Branches executed:42.86% of 28
+Taken at least once:25.00% of 28
+Calls executed:47.00% of 100
 Creating 'stl_list.h.gcov'
 
-File '/usr/include/c++/4.8/bits/stl_algobase.h'
-Lines executed:100.00% of 20
-Branches executed:100.00% of 6
-Taken at least once:83.33% of 6
-Calls executed:100.00% of 20
-Creating 'stl_algobase.h.gcov'
-
-File '/usr/include/c++/4.8/bits/stl_iterator.h'
-Lines executed:80.00% of 25
-No branches
-Calls executed:87.50% of 8
-Creating 'stl_iterator.h.gcov'
-
 File '/usr/include/c++/4.8/bits/move.h'
-Lines executed:100.00% of 6
+Lines executed:66.67% of 6
 No branches
 No calls
 Creating 'move.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_iterator.h'
+Lines executed:82.76% of 29
+No branches
+Calls executed:90.91% of 11
+Creating 'stl_iterator.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_algobase.h'
+Lines executed:69.23% of 39
+Branches executed:80.00% of 10
+Taken at least once:60.00% of 10
+Calls executed:66.67% of 36
+Creating 'stl_algobase.h.gcov'
 
 File '/usr/include/c++/4.8/bits/stl_iterator_base_types.h'
 Lines executed:100.00% of 4
 No branches
 Calls executed:100.00% of 2
 Creating 'stl_iterator_base_types.h.gcov'
+
+File '/usr/include/c++/4.8/bits/list.tcc'
+Lines executed:33.33% of 24
+Branches executed:11.11% of 18
+Taken at least once:11.11% of 18
+Calls executed:16.67% of 18
+Creating 'list.tcc.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_construct.h'
+Lines executed:100.00% of 15
+Branches executed:75.00% of 8
+Taken at least once:50.00% of 8
+Calls executed:71.43% of 14
+Creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/4.8/bits/alloc_traits.h'
+Lines executed:75.00% of 16
+No branches
+Calls executed:85.71% of 14
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_uninitialized.h'
+Lines executed:80.65% of 31
+Branches executed:70.00% of 20
+Taken at least once:45.00% of 20
+Calls executed:64.44% of 45
+Creating 'stl_uninitialized.h.gcov'
 
 File '/usr/include/c++/4.8/ext/new_allocator.h'
 Lines executed:92.86% of 14
@@ -89,37 +132,11 @@ Taken at least once:50.00% of 10
 Calls executed:82.35% of 17
 Creating 'new_allocator.h.gcov'
 
-File '/usr/include/c++/4.8/bits/stl_construct.h'
-Lines executed:100.00% of 15
-Branches executed:83.33% of 12
-Taken at least once:50.00% of 12
-Calls executed:70.59% of 17
-Creating 'stl_construct.h.gcov'
-
-File '/usr/include/c++/4.8/bits/allocator.h'
-Lines executed:100.00% of 7
-No branches
-Calls executed:100.00% of 11
-Creating 'allocator.h.gcov'
-
-File '/usr/include/c++/4.8/bits/stl_uninitialized.h'
-Lines executed:79.31% of 29
-Branches executed:70.00% of 20
-Taken at least once:45.00% of 20
-Calls executed:61.90% of 42
-Creating 'stl_uninitialized.h.gcov'
-
-File '/usr/include/c++/4.8/bits/alloc_traits.h'
-Lines executed:75.00% of 16
-No branches
-Calls executed:85.71% of 14
-Creating 'alloc_traits.h.gcov'
-
 File '/usr/include/c++/4.8/bits/stl_vector.h'
-Lines executed:87.50% of 72
+Lines executed:94.87% of 78
 Branches executed:100.00% of 38
-Taken at least once:57.89% of 38
-Calls executed:82.42% of 91
+Taken at least once:60.53% of 38
+Calls executed:86.32% of 95
 Creating 'stl_vector.h.gcov'
 
 File '/usr/include/c++/4.8/bits/basic_ios.h'
@@ -129,12 +146,12 @@ Taken at least once:0.00% of 2
 Calls executed:0.00% of 1
 Creating 'basic_ios.h.gcov'
 
-File '/usr/include/c++/4.8/bits/list.tcc'
-Lines executed:83.33% of 24
-Branches executed:88.89% of 18
-Taken at least once:66.67% of 18
-Calls executed:88.89% of 18
-Creating 'list.tcc.gcov'
+File '/usr/include/c++/4.8/bits/vector.tcc'
+Lines executed:71.62% of 74
+Branches executed:56.00% of 50
+Taken at least once:30.00% of 50
+Calls executed:58.06% of 62
+Creating 'vector.tcc.gcov'
 
 File '/usr/include/c++/4.8/sstream'
 Lines executed:0.00% of 1
@@ -166,13 +183,6 @@ Lines executed:100.00% of 2
 No branches
 Calls executed:100.00% of 2
 Creating 'alloc_traits.h.gcov'
-
-File '/usr/include/c++/4.8/bits/vector.tcc'
-Lines executed:73.08% of 52
-Branches executed:50.00% of 24
-Taken at least once:25.00% of 24
-Calls executed:55.56% of 36
-Creating 'vector.tcc.gcov'
 
 File '/usr/include/c++/4.8/istream'
 No executable lines
@@ -225,17 +235,17 @@ No calls
 Creating 'char_traits.h.gcov'
 
 File 'TestPFD.c++'
-Lines executed:100.00% of 38
-Branches executed:59.38% of 256
-Taken at least once:29.69% of 256
-Calls executed:53.82% of 314
+Lines executed:100.00% of 78
+Branches executed:55.84% of 634
+Taken at least once:27.92% of 634
+Calls executed:50.07% of 735
 Creating 'TestPFD.c++.gcov'
 
 File '/usr/include/gtest/internal/gtest-internal.h'
 Lines executed:80.00% of 5
-Branches executed:100.00% of 34
-Taken at least once:50.00% of 34
-Calls executed:71.64% of 67
+Branches executed:100.00% of 54
+Taken at least once:50.00% of 54
+Calls executed:72.90% of 107
 Creating 'gtest-internal.h.gcov'
 
 File '/usr/include/c++/4.8/iostream'
@@ -278,9 +288,9 @@ Calls executed:0.00% of 6
 Creating 'new_allocator.h.gcov'
 
 File '/usr/include/c++/4.8/bits/stl_list.h'
-Lines executed:19.35% of 31
+Lines executed:24.24% of 33
 No branches
-Calls executed:27.27% of 11
+Calls executed:38.46% of 13
 Creating 'stl_list.h.gcov'
 
 File '/usr/include/c++/4.8/bits/list.tcc'
@@ -343,10 +353,10 @@ Calls executed:0.00% of 19
 Creating 'basic_string.tcc.gcov'
 
 File '/usr/include/gtest/gtest.h'
-Lines executed:42.86% of 21
+Lines executed:47.83% of 23
 Branches executed:30.00% of 20
 Taken at least once:15.00% of 20
-Calls executed:18.18% of 44
+Calls executed:20.00% of 45
 Creating 'gtest.h.gcov'
 
 File '/usr/include/c++/4.8/streambuf'

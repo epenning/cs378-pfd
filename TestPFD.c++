@@ -54,10 +54,16 @@ TEST(PFDFixture, read) {
 // make_lists
 // ----
 
-TEST(PFDFixture, make_lists) {
+TEST(PFDFixture, make_lists_1) {
     std::vector<list<int>> lists = make_lists(5);
     ASSERT_EQ( 5, lists.size());
 	}
+
+TEST(PFDFixture, make_lists_2) {
+    std::vector<list<int>> lists = make_lists(2);
+    ASSERT_EQ( 0, lists[0].size());
+    ASSERT_EQ( 0, lists[1].size());
+    }
 
 // ----
 // set_lists
@@ -66,29 +72,81 @@ TEST(PFDFixture, make_lists) {
 TEST(PFDFixture, set_lists_1) {
     make_lists(5);
     std::vector<list<int>> lists = set_list({ 3, 1, 5 });
-    ASSERT_EQ( 2, lists[3].size());
+    ASSERT_EQ( 1, lists[0].size());
+    ASSERT_EQ( 1, lists[4].size());
 	}
 
 TEST(PFDFixture, set_lists_2) {
     make_lists(5);
     auto lists = set_list({ 3, 1, 5 });
-    auto iter = lists[3].begin();
-    ASSERT_EQ( 1, *(iter++));
-    ASSERT_EQ( 5, *(iter++));
+    ASSERT_EQ( 3, lists[0].front());
+    ASSERT_EQ( 3, lists[4].front());
 	}
+
+TEST(PFDFixture, set_lists_3) {
+    make_lists(5);
+    set_list({ 3, 1, 5 });
+    auto lists = set_list({ 4, 1, 3 });
+    ASSERT_EQ( 2, lists[0].size());
+    ASSERT_EQ( 1, lists[2].size());
+    ASSERT_EQ( 1, lists[4].size());
+    }
+
+TEST(PFDFixture, set_lists_4) {
+    make_lists(5);
+    set_list({ 3, 1, 5 });
+    auto lists = set_list({ 4, 1, 3 });
+    auto iter1 = lists[0].begin();
+    ASSERT_EQ( 3, *(iter1++));
+    ASSERT_EQ( 4, *(iter1++));
+    ASSERT_EQ( 3, lists[4].front());
+    ASSERT_EQ( 4, lists[2].front());
+    }
 
 // ----
 // make_graph
 // ----
 
+// test having correct graph values from 1 rule input
 TEST(PFDFixture, make_graph_1) {
     istringstream r("5 1\n3 2 1 5\n");
     auto lists = make_graph(r);
     ASSERT_EQ( 5, lists.size());
-    auto iter = lists[3].begin();
-    ASSERT_EQ( 1, *(iter++));
-    ASSERT_EQ( 5, *(iter++));
+    ASSERT_EQ( 3, lists[0].front());
+    ASSERT_EQ( 3, lists[4].front());
 	}
+
+// test having correct number of successors for each task from sample input
+TEST(PFDFixture, make_graph_2) {
+    istringstream r("5 4\n3 2 1 5\n2 2 5 3\n4 1 3\n5 1 1");
+    auto lists = make_graph(r);
+    ASSERT_EQ( 5, lists.size());
+    ASSERT_EQ( 2, lists[0].size());
+    ASSERT_EQ( 0, lists[1].size());
+    ASSERT_EQ( 2, lists[2].size());
+    ASSERT_EQ( 0, lists[3].size());
+    ASSERT_EQ( 2, lists[4].size());
+    }
+
+// test having correct successors for each task from sample input
+TEST(PFDFixture, make_graph_3) {
+    istringstream r("5 4\n3 2 1 5\n2 2 5 3\n4 1 3\n5 1 1");
+    auto lists = make_graph(r);
+    // 1 before 3, 5
+    auto iter = lists[0].begin();
+    ASSERT_EQ( 3, *(iter++));
+    ASSERT_EQ( 5, *(iter++));
+    // 2 before none
+    // 3 before 2, 4
+    iter = lists[2].begin();
+    ASSERT_EQ( 2, *(iter++));
+    ASSERT_EQ( 4, *(iter++));
+    // 4 before none
+    // 5 before 3, 2
+    iter = lists[4].begin();
+    ASSERT_EQ( 3, *(iter++));
+    ASSERT_EQ( 2, *(iter++));
+    }
 
 // ----
 // eval

@@ -61,7 +61,11 @@ std::vector<int> pfd_read (const string& s) {
 // ------------
 
 vector<list<int>> make_lists (int dimension) {
-    adj_lists.resize(dimension);
+    adj_lists.resize(dimension, list<int>(0, 0));
+    for (int i = 0; i < dimension; ++i)
+    {
+        adj_lists[i] = list<int>(0, 0);
+    }
     return adj_lists;
 }
 
@@ -71,12 +75,10 @@ vector<list<int>> make_lists (int dimension) {
 
 vector<list<int>> set_list (vector<int> v) {
     int task = v[0];
-    list<int> dependencyList;
     for (int i = 1; i < v.size(); ++i)
     {
-        dependencyList.push_back(v[i]);
+        (adj_lists[v[i]-1]).push_back(task);
     }
-    adj_lists[task] = dependencyList;
     return adj_lists;
 }
 
