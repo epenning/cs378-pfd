@@ -132,7 +132,7 @@ list<int> pfd_eval (vector<list<int>> graph) {
         return L (a topologically sorted order)
     */
     list<int> solution = {};
-    priority_queue<int, vector<int>, greater<int>> independent_tasks = {};
+    priority_queue<int, vector<int>, greater<int>> independent_tasks {};
     return list<int>(0, 0);}
 
 // -------------
