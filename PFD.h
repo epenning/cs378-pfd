@@ -99,16 +99,16 @@ bool task_independent (vector<list<int>> graph, int task);
  * @param graph the adjacency list representation of the graph of tasks
  * @return an ordered list of the tasks following the dependency rules
  */
-list<int> pfd_eval (vector<list<int>> graph);
+vector<int> pfd_eval (vector<list<int>> graph);
 
 // -------------
 // pfd_print
 // -------------
 
 /**
- * print a vector of ints (tasks)
+ * print a list of ints (tasks)
  * @param w an ostream
- * @param v the vector
+ * @param v the list
  * @param num_task the number of tasks to be printed
  */
 void pfd_print (ostream& w, vector<int> v, int num_task);
@@ -122,6 +122,5 @@ void pfd_print (ostream& w, vector<int> v, int num_task);
  * @param w an ostream
  */
 void pfd_solve (istream& r, ostream& w);
-    // FIX THIS
 
 #endif // PFD_h

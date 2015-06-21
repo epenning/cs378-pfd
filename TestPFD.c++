@@ -189,7 +189,7 @@ TEST(PFDFixture, eval_1) {
     // Test graph:
     // 1 before 2
     vector<list<int>> graph = {{2}, {}};
-    list<int> solution = pfd_eval(graph);
+    vector<int> solution = pfd_eval(graph);
     ASSERT_EQ(2, solution.size());
     auto iter = solution.begin();
     ASSERT_EQ(1, *(iter++));
@@ -203,7 +203,7 @@ TEST(PFDFixture, eval_2) {
     // 3 before 2, 4
     // 5 before 3, 2
     vector<list<int>> graph = {{3, 5}, {}, {2, 4}, {}, {3, 2}};
-    list<int> solution = pfd_eval(graph);
+    vector<int> solution = pfd_eval(graph);
     ASSERT_EQ(5, solution.size());
     auto iter = solution.begin();
     ASSERT_EQ(1, *(iter++));
@@ -226,13 +226,20 @@ TEST(PFDFixture, print) {
 // -----
 // solve
 // -----
-/*
-TEST(PFDFixture, solve) {
-    istringstream r("1 10\n100 200\n201 210\n900 1000\n");
+
+TEST(PFDFixture, solve_1) {
+    istringstream r("2 1\n2 1 1\n");
     ostringstream w;
     pfd_solve(r, w);
-    ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());
-	}*/
+    ASSERT_EQ("1 2\n", w.str());
+	}
+
+TEST(PFDFixture, solve_2) {
+    istringstream r("5 4\n3 2 1 5\n2 2 5 3\n4 1 3\n5 1 1\n");
+    ostringstream w;
+    pfd_solve(r, w);
+    ASSERT_EQ("1 5 3 2 4\n", w.str());
+    }
 
 /*
 % ls -al /usr/include/gtest/

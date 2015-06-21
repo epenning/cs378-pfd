@@ -129,23 +129,8 @@ bool task_independent (vector<list<int>> graph, int task) {
 // pfd_eval
 // ------------
 
-list<int> pfd_eval (vector<list<int>> graph) {
-    /*  ALGORITHM TO USE:
-    L ? Empty list that will contain the sorted elements
-    S ? Set of all nodes with no incoming edges
-    while S is non-empty do
-        remove a node n from S
-        add n to tail of L
-        for each node m with an edge e from n to m do
-            remove edge e from the graph
-            if m has no other incoming edges then
-                insert m into S
-    if graph has edges then
-        return error (graph has at least one cycle)
-    else 
-        return L (a topologically sorted order)
-    */
-    list<int> solution = {};
+vector<int> pfd_eval (vector<list<int>> graph) {
+    vector<int> solution = {};
     // populate queue of tasks without predecessors
     priority_queue<int, vector<int>, greater<int>> independent_tasks {};
     for (int task = 1; task <= graph.size(); ++task) {
@@ -193,13 +178,8 @@ void pfd_print (ostream& w, vector<int> v, int num_task) {
 
 void pfd_solve (istream& r, ostream& w) {
     // FIX THIS
-    /*
-    string s;
-    while (getline(r, s)) {
-        const pair<int, int> p = pfd_read(s);
-        const int            i = p.first;
-        const int            j = p.second;
-        const int            v = pfd_eval(i, j);
-        pfd_print(w, i, j, v);}
-        */}
+    auto graph = make_graph(r);
+    auto solution = pfd_eval(graph);
+    pfd_print(w, solution, graph.size());
+}
 
