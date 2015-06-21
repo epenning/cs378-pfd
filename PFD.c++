@@ -112,6 +112,14 @@ vector<list<int>> make_graph (istream& r) {
 }
 
 // ------------
+// task_independent
+// ------------
+
+bool task_independent (vector<list<int>> graph, int task) {
+    return false;
+}
+
+// ------------
 // pfd_eval
 // ------------
 
@@ -133,7 +141,8 @@ list<int> pfd_eval (vector<list<int>> graph) {
     */
     list<int> solution = {};
     priority_queue<int, vector<int>, greater<int>> independent_tasks {};
-    return list<int>(0, 0);}
+    return solution;
+}
 
 // -------------
 // pfd_print

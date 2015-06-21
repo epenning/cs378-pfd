@@ -79,6 +79,18 @@ vector<list<int>> set_list (vector<int> v);
 vector<list<int>> make_graph (istream& r);
 
 // ------------
+// task_independent
+// ------------
+
+/**
+ * check if a task has any predecessors or not in graph
+ * @param graph the adjacency list representation of the graph of tasks
+ * @param task the task to check for dependency
+ * @return true if task has no predecessors, otherwise false
+ */
+bool task_independent (vector<list<int>> graph, int task);
+
+// ------------
 // pfd_eval
 // ------------
 
