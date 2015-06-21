@@ -69,7 +69,7 @@ vector<int> pfd_read (const string& s) {
 // ------------
 
 vector<list<int>> make_lists (int dimension) {
-    adj_lists.resize(dimension, list<int>(0, 0));
+    adj_lists.resize(dimension);
     for (int i = 0; i < dimension; ++i)
     {
         adj_lists[i] = list<int>(0, 0);
@@ -83,6 +83,7 @@ vector<list<int>> make_lists (int dimension) {
 
 vector<list<int>> set_list (vector<int> v) {
     // for every listed predecessor, add task to its successor list
+    assert(v.size() > 1);
     int task = v[0];
     for (int i = 1; i < v.size(); ++i)
     {
@@ -116,7 +117,12 @@ vector<list<int>> make_graph (istream& r) {
 // ------------
 
 bool task_independent (vector<list<int>> graph, int task) {
-    return false;
+    assert(task <= graph.size());
+    for (auto list : graph)
+        for (int successor : list)
+            if (successor == task)
+                return false;
+    return true;
 }
 
 // ------------
@@ -140,7 +146,32 @@ list<int> pfd_eval (vector<list<int>> graph) {
         return L (a topologically sorted order)
     */
     list<int> solution = {};
+    // populate queue of tasks without predecessors
     priority_queue<int, vector<int>, greater<int>> independent_tasks {};
+    for (int task = 1; task <= graph.size(); ++task) {
+        if (task_independent(graph, task))
+            independent_tasks.push(task);
+    }
+
+    // extract tasks from graph until all tasks have been listed
+    assert(!independent_tasks.empty());
+    do {
+        // remove independent task from graph
+        int task = independent_tasks.top();
+        independent_tasks.pop();
+        // add task to end of solution
+        solution.push_back(task);
+        // remove edges to successors from task
+        list<int>& successors = graph[task-1];
+        while (!successors.empty()) {
+            int successor = successors.front();
+            successors.pop_front();
+            // if removed successor has no other predecessors, add to queue
+            if (task_independent(graph, successor))
+                independent_tasks.push(successor);
+        }
+    } while(!independent_tasks.empty());
+    assert(solution.size() == graph.size());
     return solution;
 }
 
@@ -149,6 +180,7 @@ list<int> pfd_eval (vector<list<int>> graph) {
 // -------------
 
 void pfd_print (ostream& w, vector<int> v, int num_task) {
+    assert(num_task == v.size());
     for (int i = 0; i < num_task-1; ++i)
     {
         w << v[i] << " ";

@@ -149,6 +149,38 @@ TEST(PFDFixture, make_graph_3) {
     }
 
 // ----
+// task_independent
+// ----
+
+// test finding a solution on a very simple graph
+TEST(PFDFixture, task_independent_1) {
+    // Test graph:
+    // 1 before 2
+    vector<list<int>> graph = {{2}, {}};
+    ASSERT_EQ(true, task_independent(graph, 1));
+    ASSERT_EQ(false, task_independent(graph, 2));
+    }
+
+TEST(PFDFixture, task_independent_2) {
+    // Test graph:
+    // no rules
+    vector<list<int>> graph = {{}, {}};
+    ASSERT_EQ(true, task_independent(graph, 1));
+    ASSERT_EQ(true, task_independent(graph, 2));
+    }
+
+TEST(PFDFixture, task_independent_3) {
+    // Test graph:
+    // Sample Graph
+    vector<list<int>> graph = {{3, 5}, {}, {2, 4}, {}, {3, 2}};
+    ASSERT_EQ(true, task_independent(graph, 1));
+    ASSERT_EQ(false, task_independent(graph, 2));
+    ASSERT_EQ(false, task_independent(graph, 3));
+    ASSERT_EQ(false, task_independent(graph, 4));
+    ASSERT_EQ(false, task_independent(graph, 5));
+    }
+
+// ----
 // eval
 // ----
 
@@ -158,7 +190,28 @@ TEST(PFDFixture, eval_1) {
     // 1 before 2
     vector<list<int>> graph = {{2}, {}};
     list<int> solution = pfd_eval(graph);
+    ASSERT_EQ(2, solution.size());
+    auto iter = solution.begin();
+    ASSERT_EQ(1, *(iter++));
+    ASSERT_EQ(2, *(iter++));
 	}
+
+// test finding a solution on sample graph
+TEST(PFDFixture, eval_2) {
+    // Test graph: Sample Graph
+    // 1 before 3, 5
+    // 3 before 2, 4
+    // 5 before 3, 2
+    vector<list<int>> graph = {{3, 5}, {}, {2, 4}, {}, {3, 2}};
+    list<int> solution = pfd_eval(graph);
+    ASSERT_EQ(5, solution.size());
+    auto iter = solution.begin();
+    ASSERT_EQ(1, *(iter++));
+    ASSERT_EQ(5, *(iter++));
+    ASSERT_EQ(3, *(iter++));
+    ASSERT_EQ(2, *(iter++));
+    ASSERT_EQ(4, *(iter++));
+}
 
 // -----
 // print
