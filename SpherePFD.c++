@@ -4,6 +4,14 @@
 // Glenn P. Downing
 // ----------------------------
 
+// -------
+// defines
+// -------
+
+#ifdef ONLINE_JUDGE
+    #define NDEBUG
+#endif
+
 // --------
 // includes
 // --------
@@ -17,8 +25,6 @@
 #include <list>       // list
 #include <queue>      // queue
 #include <functional> // greater
-
-#include "PFD.h"
 
 using namespace std;
 
@@ -177,8 +183,18 @@ void pfd_print (ostream& w, vector<int> v, int num_task) {
 // -------------
 
 void pfd_solve (istream& r, ostream& w) {
+    // FIX THIS
     auto graph = make_graph(r);
     auto solution = pfd_eval(graph);
     pfd_print(w, solution, graph.size());
 }
 
+// ----
+// main
+// ----
+
+int main () {
+    using namespace std;
+    pfd_solve(cin, cout);
+    return 0;
+}

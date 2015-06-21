@@ -14,8 +14,10 @@
 #include <iostream> // istream, ostream
 #include <string>   // string
 #include <utility>  // pair
-#include <vector>
-#include <list>
+#include <vector>     // vector
+#include <list>       // list
+#include <queue>      // queue
+#include <functional> // greater
 
 using namespace std;
 
@@ -24,7 +26,7 @@ using namespace std;
 // ------------
 
 /**
- * read two ints
+ * read the two first ints of input
  * @param s a string
  * @return a pair of ints, representing the number of tasks and number of rules
  */
@@ -35,12 +37,11 @@ pair<int, int> pfd_read_first (const string& s);
 // ------------
 
 /**
- * read a string of ints
+ * read a string of multiple ints
  * @param s a string
  * @return a vector, with first element being the task and the others being those it is dependent on
  */
-std::vector<int> pfd_read (const string& s);
-    // FIX THIS
+vector<int> pfd_read (const string& s);
 
 
 // -----------
@@ -48,8 +49,9 @@ std::vector<int> pfd_read (const string& s);
 // -----------
 
 /**
- * initialize the adjacenty lists to the number of tasks
+ * initialize empty adjacenty lists for the number of tasks
  * @param dimension the number of tasks
+ * @return the empty adjacency lists graph structure
  */
 vector<list<int>> make_lists (int dimension);
 
@@ -57,39 +59,59 @@ vector<list<int>> make_lists (int dimension);
 // set_list
 // ------------
 
+/**
+ * put a task into the list of successors for each predecessor listed
+ * @param v first element: the task to be added to each successor list
+ *          other elements: the predecessors onto whose lists the task will be added
+ * @return the updated adjacency lists graph structure
+ */
 vector<list<int>> set_list (vector<int> v);
 
 // ------------
 // make_graph
 // ------------
 
+/**
+ * create an adjacency list graph structure from an input stream
+ * @param r an istream
+ * @return the fully populated adjacency lists graph structure
+ */
 vector<list<int>> make_graph (istream& r);
+
+// ------------
+// task_independent
+// ------------
+
+/**
+ * check if a task has any predecessors or not in graph
+ * @param graph the adjacency list representation of the graph of tasks
+ * @param task the task to check for dependency
+ * @return true if task has no predecessors, otherwise false
+ */
+bool task_independent (vector<list<int>> graph, int task);
 
 // ------------
 // pfd_eval
 // ------------
 
 /**
- * @param i the beginning of the range, inclusive
- * @param j the end       of the range, inclusive
- * @return the max cycle length of the range [i, j]
+ * produce an ordering for the task dependencies problem
+ * @param graph the adjacency list representation of the graph of tasks
+ * @return an ordered list of the tasks following the dependency rules
  */
-int pfd_eval (int i, int j);
-    // FIX THIS
+vector<int> pfd_eval (vector<list<int>> graph);
 
 // -------------
 // pfd_print
 // -------------
 
 /**
- * print three ints
+ * print a list of ints (tasks)
  * @param w an ostream
- * @param i the beginning of the range, inclusive
- * @param j the end       of the range, inclusive
- * @param v the max cycle length
+ * @param v the list
+ * @param num_task the number of tasks to be printed
  */
 void pfd_print (ostream& w, vector<int> v, int num_task);
-    // FIX THIS
 
 // -------------
 // pfd_solve
@@ -100,6 +122,5 @@ void pfd_print (ostream& w, vector<int> v, int num_task);
  * @param w an ostream
  */
 void pfd_solve (istream& r, ostream& w);
-    // FIX THIS
 
 #endif // PFD_h
