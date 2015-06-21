@@ -14,8 +14,8 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
-#include <vector>
-#include <list>
+#include <vector>     // vector
+#include <list>       // list
 
 #include "gtest/gtest.h"
 
@@ -152,8 +152,12 @@ TEST(PFDFixture, make_graph_3) {
 // eval
 // ----
 
+// test finding a solution on a very simple graph
 TEST(PFDFixture, eval_1) {
-    // FIX THIS
+    // Test graph:
+    // 1 before 2
+    vector<list<int>> graph = {{2}, {}};
+    list<int> solution = pfd_eval(graph);
 	}
 
 // -----

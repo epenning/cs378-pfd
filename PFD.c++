@@ -8,13 +8,15 @@
 // includes
 // --------
 
-#include <cassert>  // assert
-#include <iostream> // endl, istream, ostream
-#include <sstream>  // istringstream
-#include <string>   // getline, string
-#include <utility>  // make_pair, pair
-#include <vector>
-#include <list>
+#include <cassert>    // assert
+#include <iostream>   // endl, istream, ostream
+#include <sstream>    // istringstream
+#include <string>     // getline, string
+#include <utility>    // make_pair, pair
+#include <vector>     // vector
+#include <list>       // list
+#include <queue>      // queue
+#include <functional> // greater
 
 #include "PFD.h"
 
@@ -113,9 +115,25 @@ vector<list<int>> make_graph (istream& r) {
 // pfd_eval
 // ------------
 
-int pfd_eval (int i, int j) {
-    // <your code>
-    return 1;}
+list<int> pfd_eval (vector<list<int>> graph) {
+    /*  ALGORITHM TO USE:
+    L ? Empty list that will contain the sorted elements
+    S ? Set of all nodes with no incoming edges
+    while S is non-empty do
+        remove a node n from S
+        add n to tail of L
+        for each node m with an edge e from n to m do
+            remove edge e from the graph
+            if m has no other incoming edges then
+                insert m into S
+    if graph has edges then
+        return error (graph has at least one cycle)
+    else 
+        return L (a topologically sorted order)
+    */
+    list<int> solution = {};
+    priority_queue<int, vector<int>, greater<int>> independent_tasks = {};
+    return list<int>(0, 0);}
 
 // -------------
 // pfd_print

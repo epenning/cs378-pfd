@@ -14,8 +14,10 @@
 #include <iostream> // istream, ostream
 #include <string>   // string
 #include <utility>  // pair
-#include <vector>
-#include <list>
+#include <vector>     // vector
+#include <list>       // list
+#include <queue>      // queue
+#include <functional> // greater
 
 using namespace std;
 
@@ -81,12 +83,11 @@ vector<list<int>> make_graph (istream& r);
 // ------------
 
 /**
- * @param i the beginning of the range, inclusive
- * @param j the end       of the range, inclusive
- * @return the max cycle length of the range [i, j]
+ * produce an ordering for the task dependencies problem
+ * @param graph the adjacency list representation of the graph of tasks
+ * @return an ordered list of the tasks following the dependency rules
  */
-int pfd_eval (int i, int j);
-    // FIX THIS
+list<int> pfd_eval (vector<list<int>> graph);
 
 // -------------
 // pfd_print
