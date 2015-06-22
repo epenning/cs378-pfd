@@ -14,8 +14,8 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
-#include <vector>     // vector
-#include <list>       // list
+#include <vector>   // vector
+#include <list>     // list
 
 #include "gtest/gtest.h"
 
@@ -42,13 +42,24 @@ TEST(PFDFixture, read_first) {
 // read
 // ----
 
-TEST(PFDFixture, read) {
+TEST(PFDFixture, read_1) {
     string s = "3 2 1 5\n";
     std::vector<int> p = pfd_read(s);
     ASSERT_EQ( 3, p[0]);
     ASSERT_EQ( 1, p[1]);
     ASSERT_EQ( 5, p[2]);
-	}
+    }
+
+TEST(PFDFixture, read_2) {
+  string s = "1 3 2 2 5\n";
+  std::vector<int> p = pfd_read(s);
+  ASSERT_EQ( 1, p[0]);
+  ASSERT_EQ( 2, p[1]);
+  ASSERT_EQ( 2, p[2]);
+  ASSERT_EQ( 5, p[3]);
+}
+
+
 
 // ----
 // make_lists
@@ -240,6 +251,57 @@ TEST(PFDFixture, solve_2) {
     pfd_solve(r, w);
     ASSERT_EQ("1 5 3 2 4\n", w.str());
     }
+
+TEST(PFDFixture, solve_3) {
+  istringstream r("4 2\n1 1 4\n2 1 3\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("3 2 4 1\n", w.str());
+}
+
+TEST(PFDFixture, solve_4) {
+  istringstream r("6 4\n3 2 4 1\n6 2 1 3\n1 1 5\n4 2 2 5\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("2 5 1 4 3 6\n", w.str());
+}
+
+TEST(PFDFixture, solve_5) {
+  istringstream r("4 2\n3 1 2\n4 3 1 3 2\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("1 2 3 4\n", w.str());
+}
+
+TEST(PFDFixture, solve_6) {
+  istringstream r("1 0\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("1\n", w.str());
+}
+
+TEST(PFDFixture, solve_7) {
+  istringstream r("3 2\n1 1 2\n3 1 2\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("2 1 3\n", w.str());
+}
+
+TEST(PFDFixture, solve_8) {
+  istringstream r("5 4\n2 1 4\n1 1 3\n4 1 3\n3 1 5\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("5 3 1 4 2\n", w.str());
+}
+
+TEST(PFDFixture, solve_9) {
+  istringstream r("3 2\n1 2 3 2\n2 1 3\n");
+  ostringstream w;
+  pfd_solve(r, w);
+  ASSERT_EQ("3 2 1\n", w.str());
+}
+
+
 
 /*
 % ls -al /usr/include/gtest/
