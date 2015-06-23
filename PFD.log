@@ -1,0 +1,150 @@
+commit c82bd42533f536f72e3e21a2b796e3e5e6555618
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Mon Jun 22 22:27:34 2015 -0500
+
+    removed sample.out files
+
+commit a3ab75279c5e6a3038ce69d022d4747fcbc3ecc3
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Mon Jun 22 22:26:32 2015 -0500
+
+    created a more complex acceptance test
+
+commit 8ccb0237be05f4f5a4deea6e94a4b796c7cf9e01
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Mon Jun 22 21:13:01 2015 -0500
+
+    changed makefile to give options that work on windows
+
+commit 694db147ac1f99af4ab074237afcfdf1f80d10fd
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Mon Jun 22 16:37:21 2015 -0500
+
+    Created a 100 line test case in RunPFD.in
+
+commit 9bd21e2eeb05b669c4f8637525659dea39f96e15
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Sun Jun 21 23:09:21 2015 -0500
+
+    Completed average of 3 unit tests per function
+
+commit 7f63f6c327e188e9ee0a821ddb301369586c8696
+Merge: ba4eaa8 b9b9c78
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Sun Jun 21 10:37:39 2015 -0500
+
+    merge updated files to lclg21 dev branch
+
+commit ba4eaa885a17c8d8844e89efe2aa5e18dbcfd513
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Sun Jun 21 10:34:46 2015 -0500
+
+    updated TestPFD.out
+
+commit b9b9c783932a905c3e470d31b615154b8a0c6eb1
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 23:48:00 2015 -0500
+
+    made SpherePFD.c++ which is accepted by sphere successfully
+
+commit 7cf0024047fc1e6987352f90cf5a4bdb5c0a2752
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 23:32:55 2015 -0500
+
+    edited interfaces of some functions to create working pfd_solve and its simple tests
+
+commit b43197533d1f199d65b5f7860fc4cfb909d3567e
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 23:08:29 2015 -0500
+
+    implemented algorithm in pfd_eval and added initial tests for it
+
+commit 41d8767fffdba4af7c9eedc96f78ccf564b94c3b
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 22:17:07 2015 -0500
+
+    added function task_independent to help with pfd_eval
+
+commit b5a54ba03c63853d41ef9ca20c8146d656373fd3
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 22:07:15 2015 -0500
+
+    changed initialization in pfd_eval so works with clang++
+
+commit 52c84a2d243afcfc235dc499777518fbde053135
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 22:01:02 2015 -0500
+
+    changed documentation, signature of pfd_eval and commented in the algorithm to use for it
+
+commit ce96cf680134bce40f69c266705af3d35974c2fa
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 12:10:45 2015 -0500
+
+    added documentation and fixed print to not have a trailing space
+
+commit 8793c393d1fa5f41d9ffb2dba488cf4a2f3bfec6
+Author: Erin Pennington <epenning@cs.utexas.edu>
+Date:   Sat Jun 20 11:46:40 2015 -0500
+
+    restructured graph to have each list be the successors of a task, rather than predecessors, and changed tests for it
+
+commit 4e52be724c3d0f25f5cec4bbb70f0ce9d0624f51
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Fri Jun 19 19:04:14 2015 -0500
+
+    added print function and wrote test for it
+
+commit d765844c5fde0b246e948f7d0d4c2cc195b80a22
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Fri Jun 19 18:53:09 2015 -0500
+
+    creation of graph representation and test for it
+
+commit 183bf196acc1fb5b46fa07a8299c40638efe519d
+Author: Luis Lopez <lclg21@utexas.edu>
+Date:   Fri Jun 19 18:33:35 2015 -0500
+
+    added functions to create graph and their tests
+
+commit a6f1f15746d4fa181727187bbd97edee8b4a29c3
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 11:22:04 2015 -0500
+
+    fixed travis spacing
+
+commit 30af44e0ebf18d78e2ea86f27880209eaeb2c6fc
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 11:20:16 2015 -0500
+
+    fixed travis spacing
+
+commit e4f33c8d1ed6cff39de4a7c91d325d0929b5ff3f
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 11:03:28 2015 -0500
+
+    added sudo required to travis
+
+commit e217b332c6d1e2cd133e4242ee0da309f5b9e81a
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 10:59:50 2015 -0500
+
+    turned off email notifications from travis
+
+commit 5b4958610a8019e24b8faeecf2012d12fd0ec937
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 10:56:13 2015 -0500
+
+    copied outline of files from collatz project
+
+commit efafb2790365f7fb1b2c2f06083f76f9b5c56678
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Fri Jun 19 10:34:21 2015 -0500
+
+    made .gitignore
+
+commit de09052b15b5c4ea65cbad9d1cb7ccedcfc9fbce
+Author: pieiscool <hashi10@gmail.com>
+Date:   Fri Jun 19 10:17:11 2015 -0500
+
+    Initial commit
