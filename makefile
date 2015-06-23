@@ -1,9 +1,9 @@
 FILES :=                              \
     .travis.yml                       \
-    pfd-tests/EID-RunPFD.in   \
-    pfd-tests/EID-RunPFD.out  \
-    pfd-tests/EID-TestPFD.c++ \
-    pfd-tests/EID-TestPFD.out \
+    pfd-tests/elp692-RunPFD.in   \
+    pfd-tests/elp692-RunPFD.out  \
+    pfd-tests/elp692-TestPFD.c++ \
+    pfd-tests/elp692-TestPFD.out \
     PFD.c++                       \
     PFD.h                         \
     PFD.log                       \
@@ -63,10 +63,18 @@ Doxyfile:
 
 RunPFD: PFD.h PFD.c++ RunPFD.c++
 	$(CXX) $(CXXFLAGS) PFD.c++ RunPFD.c++ -o RunPFD
+	
+winRunPFD: PFD.h PFD.c++ RunPFD.c++
+	g++ $(CXXFLAGS) PFD.c++ RunPFD.c++ -o RunPFD.exe
 
 RunPFD.out: RunPFD
 	cat RunPFD.in
 	./RunPFD < RunPFD.in > RunPFD.out
+	cat RunPFD.out
+	
+winRunPFD.out: winRunPFD
+	cat RunPFD.in
+	./RunPFD.exe < RunPFD.in > RunPFD.out
 	cat RunPFD.out
 
 TestPFD: PFD.h PFD.c++ TestPFD.c++
